@@ -1,0 +1,145 @@
+.developer-profile-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', sans-serif;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, var(--teal-400), var(--teal-600));
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 15px rgba(13, 148, 136, 0.3);
+}
+
+.avatar-initials {
+  font-size: 3rem;
+  color: white;
+  font-weight: 700;
+}
+
+.profile-header h1 {
+  font-size: 2.2rem;
+  color: #1e293b;
+  margin: 0 0 10px 0;
+  font-weight: 800;
+}
+
+.profile-role {
+  color: var(--teal-600);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.profile-section h2, .profile-section h3 {
+  color: #0f172a;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.profile-section p {
+  color: #475569;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.flex-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.skills-card, .contact-card {
+  background: #f8fafc;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.skill-tag {
+  background: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid var(--teal-200);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.text-teal {
+  color: var(--teal-700);
+}
+
+.contact-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-links li {
+  margin-bottom: 12px;
+  font-size: 1rem;
+  color: #334155;
+  display: flex;
+  align-items: center;
+}
+
+.contact-links strong {
+  width: 90px;
+  display: inline-block;
+  color: #0f172a;
+}
+
+.contact-links a {
+  color: var(--teal-600);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.contact-links a:hover {
+  color: var(--teal-800);
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .flex-section {
+    grid-template-columns: 1fr;
+  }
+}

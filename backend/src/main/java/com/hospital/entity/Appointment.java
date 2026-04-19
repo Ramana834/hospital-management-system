@@ -1,0 +1,73 @@
+package com.hospital.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "appointment")
+public class Appointment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    @JsonIgnoreProperties({"appointments", "medicalRecords"})
+    private Patient patient;
+
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    @JsonIgnoreProperties({"appointments", "medicalRecords"})
+    private Doctor doctor;
+
+    private LocalDate appointmentDate;
+    private LocalTime appointmentTime;
+    private String status;
+    private Integer tokenNumber;
+    private Double paymentAmount;
+    private String paymentStatus; // "Pending", "Paid"
+    private String videoMeetingLink;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    public void onCreate() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
+        if (status == null || status.isBlank()) {
+            status = "scheduled";
+        }
+        if (paymentStatus == null || paymentStatus.isBlank()) {
+            paymentStatus = "Pending";
+        }
+    }
+
+    // Getters and Setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public Patient getPatient() { return patient; }
+    public void setPatient(Patient patient) { this.patient = patient; }
+    public Doctor getDoctor() { return doctor; }
+    public void setDoctor(Doctor doctor) { this.doctor = doctor; }
+    public LocalDate getAppointmentDate() { return appointmentDate; }
+    public void setAppointmentDate(LocalDate appointmentDate) { this.appointmentDate = appointmentDate; }
+    public LocalTime getAppointmentTime() { return appointmentTime; }
+    public void setAppointmentTime(LocalTime appointmentTime) { this.appointmentTime = appointmentTime; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+    public Integer getTokenNumber() { return tokenNumber; }
+    public void setTokenNumber(Integer tokenNumber) { this.tokenNumber = tokenNumber; }
+    public Double getPaymentAmount() { return paymentAmount; }
+    public void setPaymentAmount(Double paymentAmount) { this.paymentAmount = paymentAmount; }
+    public String getPaymentStatus() { return paymentStatus; }
+    public void setPaymentStatus(String paymentStatus) { this.paymentStatus = paymentStatus; }
+    public String getVideoMeetingLink() { return videoMeetingLink; }
+    public void setVideoMeetingLink(String videoMeetingLink) { this.videoMeetingLink = videoMeetingLink; }
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+}
